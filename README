@@ -1,0 +1,69 @@
+what
+~~~~
+
+   IDA Pro Processor Module for Blackfin Instruction Set
+
+   Features:
+
+     - Blackfin disassembling...obviously...
+     - Syntax highlighting
+     - Code-/Data- References
+     - Memory Mapped Register adresses for ADSP-BF53x/ADSP-BF56x
+     - Basically Memory + I/O Registers of Rigol 1052E / Rigol 1102E (in work)
+
+
+authors
+~~~~~~~
+
+   Andreas Schuler <andreas at schulerdev.de>
+
+   Based on parts of libopcodes (Free Software Foundation, Inc.) and
+   Simple Python Byte Code Module (Chris Eagle <cseagle@gmail.com>)
+
+
+license
+~~~~~~~
+
+   GNU GENERAL PUBLIC LICENSE Version 2
+   see LICENSE
+
+
+compile/install
+~~~~~~~~~~~~~~~
+
+   You need the IDA Pro SDK to compile the processor module.
+
+   Copy the files to sdk/module/blackfin, open the Visual Studio 6
+   project files and start build. 
+   Copy Release/blackfin.w32 to procs in your IDA folder,
+   and blackfin.cfg to cfg in your IDA folder.
+
+   Sorry, at the moment only a visual Studio 6 project file exists.
+   There is a additional Makefile that is a startpoint to compile with another
+   compiler.
+
+
+why
+~~~
+   
+   I'm interested in reverse engineering the Rigol 1052E Oscilloscopes firmware
+   for hacks and homebrew. So there i developed a tool to do that...
+
+   If you have any informations for me, feel free to contact me.
+
+
+Bugs/Todo
+~~~~~~~~~
+
+   General:
+     - Function frame sizes are often wrong
+     - Add known function starts/ends
+     - Some coloring things
+   
+   Rigol:
+     - Find Memory Mappings
+     - Find function of I/O Registers
+
+
+   Patches are welcome :)
+
