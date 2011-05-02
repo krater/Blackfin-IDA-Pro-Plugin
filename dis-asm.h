@@ -73,7 +73,9 @@ typedef struct disassemble_info
 } disassemble_info;
 
 #define SET_FEATURE(outf,x)					(((outf)->feature)|=(x))
-#define SET_CODEREF(outf,addr,type)			((outf)->caddr=(addr));((outf)->ctype=(type))
+#define SET_CODEREF10(outf,pc,addr,type)	((outf)->caddr=(pc)+((SIGNEXTEND((addr),10))*2));((outf)->ctype=(type))
+#define SET_CODEREF12(outf,pc,addr,type)	((outf)->caddr=(pc)+((SIGNEXTEND((addr),12))*2));((outf)->ctype=(type))
+#define SET_CODEREF24(outf,pc,addr,type)	((outf)->caddr=(pc)+((SIGNEXTEND((addr),24))*2));((outf)->ctype=(type))
 #define SET_DATAREF(outf,addr,type,mode)	((outf)->daddr=(addr));((outf)->dtype=(type));((outf)->drefmode=(mode))
 
 extern int disasm_insn_bfin					(bfd_vma, disassemble_info *);

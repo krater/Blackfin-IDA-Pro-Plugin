@@ -56,12 +56,10 @@ Bugs/Todo
 ~~~~~~~~~
 
    General:
-     - Function frame sizes are often wrong
+     - Function frame sizes are sometimes wrong
      - Add known function starts/ends
      - Some coloring things
      - LOOP has no references
-     - Some JUMP.S has no references
-     - Some calls maybee has wrong destination addresses
      - Add DMA-Registers for BF561
    
    Rigol:

@@ -127,11 +127,11 @@ static const char *fmtconst (const_forms_t cf, TIword x, bfd_vma pc, disassemble
 
 	if (constant_formats[cf].reloc)
 	{
-		bfd_vma ea = (((constant_formats[cf].pcrel ? SIGNEXTEND (x, constant_formats[cf].nbits): x) 
-			+ constant_formats[cf].offset) << constant_formats[cf].scale);
+		bfd_vma ea=(((constant_formats[cf].pcrel?SIGNEXTEND(x,constant_formats[cf].nbits):x) +
+			constant_formats[cf].offset)<<constant_formats[cf].scale);
 		
 		if (constant_formats[cf].pcrel)
-			ea += pc;
+			ea+=pc;
 
 		/* truncate to 32-bits for proper symbol lookup/matching */
 		ea = (bu32)ea;
@@ -141,10 +141,10 @@ static const char *fmtconst (const_forms_t cf, TIword x, bfd_vma pc, disassemble
 			//outf->print_address_func (ea, outf);
 			char name[60];
 
-			if(get_colored_long_name(pc, pc+(x*2), name,60))
+			if(get_colored_long_name(pc, ea, name,60))
 				qsnprintf (buf, 60,"%s", name);
 			else
-				qsnprintf (buf, 60,COLSTR("0x%lx",SCOLOR_NUMBER), (unsigned long) pc+(x*2));
+				qsnprintf (buf, 60,COLSTR("0x%lx",SCOLOR_NUMBER), ea);
 
 			return buf;
 		}
@@ -824,7 +824,7 @@ static int decode_ProgCtrl_0 (TIword iw0, disassemble_info *outf)
 	}
 	else if (prgfunc == 6 && IS_PREG (1, poprnd))
 	{
-		OUTS (outf, "CALL1 (");
+		OUTS (outf, "CALL (");
 		OUTS (outf, pregs (poprnd));
 		OUTS (outf, ")");
 
@@ -1385,7 +1385,7 @@ static int decode_BRCC_0 (TIword iw0, bfd_vma pc, disassemble_info *outf)
 		OUTS (outf, " (BP)");
 
 		SET_FEATURE(outf,CF_JUMP);
-		SET_CODEREF(outf,pc+2*offset,fl_JN);
+		SET_CODEREF10(outf,pc,offset,fl_JN);
 		outf->itype=i_condjump;
 	}
 	else if (T == 0 && B == 1)
@@ -1395,7 +1395,7 @@ static int decode_BRCC_0 (TIword iw0, bfd_vma pc, disassemble_info *outf)
 		OUTS (outf, " (BP)");
 
 		SET_FEATURE(outf,CF_JUMP);
-		SET_CODEREF(outf,pc+2*offset,fl_JN);
+		SET_CODEREF10(outf,pc,offset,fl_JN);
 		outf->itype=i_condjump;
 	}
 	else if (T == 1)
@@ -1404,7 +1404,8 @@ static int decode_BRCC_0 (TIword iw0, bfd_vma pc, disassemble_info *outf)
 		OUTS (outf, pcrel10 (offset));
 
 		SET_FEATURE(outf,CF_JUMP);
-		SET_CODEREF(outf,pc+2*offset,fl_JN);
+		//SET_CODEREF(outf,pc+2*offset,fl_JN);
+		SET_CODEREF10(outf,pc,offset,fl_JN);
 		outf->itype=i_condjump;
 	}
 	else if (T == 0)
@@ -1413,7 +1414,7 @@ static int decode_BRCC_0 (TIword iw0, bfd_vma pc, disassemble_info *outf)
 		OUTS (outf, pcrel10 (offset));
 
 		SET_FEATURE(outf,CF_JUMP);
-		SET_CODEREF(outf,pc+2*offset,fl_JN);
+		SET_CODEREF10(outf,pc,offset,fl_JN);
 		outf->itype=i_condjump;
 	}
 	else
@@ -1437,7 +1438,7 @@ static int decode_UJUMP_0 (TIword iw0, bfd_vma pc, disassemble_info *outf)
   OUTS (outf, pcrel12 (offset));
 
   SET_FEATURE(outf,CF_STOP|CF_JUMP);
-  SET_CODEREF(outf,pc+2*offset,fl_JN);
+  SET_CODEREF12(outf,pc,offset,fl_JN);
   outf->itype=i_jump;
   return 2;
 }
@@ -2996,18 +2997,20 @@ static int decode_CALLa_0 (TIword iw0, TIword iw1, bfd_vma pc, disassemble_info 
 	if (parallel)
 		return 0;
 
+	int bla=((msw<<16)|lsw);
+
 	if (S == 1)
 	{
-		OUTS (outf, "CALL2 ");
+		OUTS (outf, "CALL ");
 		SET_FEATURE(outf,CF_JUMP|CF_CALL);
-		SET_CODEREF(outf,pc+2*(((msw)<<16)|(lsw)),fl_CF);
+		SET_CODEREF24(outf,pc,((msw<<16)|lsw),fl_CF);
 		outf->itype=i_call;
 	}
 	else if (S == 0)
 	{
 		OUTS (outf, "JUMP.L ");
 		SET_FEATURE(outf,CF_STOP|CF_JUMP);
-		SET_CODEREF(outf,pc+2*(((msw)<<16)|(lsw)),fl_JF);
+		SET_CODEREF24(outf,pc,((msw<<16)|lsw),fl_JF);
 		outf->itype=i_jump;
 	}
 	else

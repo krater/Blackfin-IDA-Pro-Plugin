@@ -49,6 +49,7 @@ void idaapi blackfin_out(void)
 	gl_comm = 1;      //we want comments!
 	MakeLine(str);    //output the line with default indentation
 
+//	printf_line(0," ...  %x ...", odi.caddr);
 
 	//Add data references
 	if(odi.drefmode==DMODE_LOAD_HIGH) 
