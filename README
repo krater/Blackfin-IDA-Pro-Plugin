@@ -59,10 +59,12 @@ Bugs/Todo
      - Function frame sizes are often wrong
      - Add known function starts/ends
      - Some coloring things
+     - Some Commands has no references
+     - Some Calls maybee has wrong destination addresses
    
    Rigol:
-     - Find Memory Mappings
-     - Find function of I/O Registers
+     - Find RAM Position
+     - Find I/O Registers for ROM-Banking
 
 
    Patches are welcome :)
