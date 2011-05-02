@@ -59,11 +59,13 @@ Bugs/Todo
      - Function frame sizes are often wrong
      - Add known function starts/ends
      - Some coloring things
-     - Some Commands has no references
-     - Some Calls maybee has wrong destination addresses
+     - LOOP has no references
+     - Some JUMP.S has no references
+     - Some calls maybee has wrong destination addresses
+     - Add DMA-Registers for BF561
    
    Rigol:
-     - Find RAM Position
+     - Find RAM Positions
      - Find I/O Registers for ROM-Banking
 
 

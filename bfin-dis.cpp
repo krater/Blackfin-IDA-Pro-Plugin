@@ -824,7 +824,7 @@ static int decode_ProgCtrl_0 (TIword iw0, disassemble_info *outf)
 	}
 	else if (prgfunc == 6 && IS_PREG (1, poprnd))
 	{
-		OUTS (outf, "CALL (");
+		OUTS (outf, "CALL1 (");
 		OUTS (outf, pregs (poprnd));
 		OUTS (outf, ")");
 
@@ -2998,7 +2998,7 @@ static int decode_CALLa_0 (TIword iw0, TIword iw1, bfd_vma pc, disassemble_info 
 
 	if (S == 1)
 	{
-		OUTS (outf, "CALL ");
+		OUTS (outf, "CALL2 ");
 		SET_FEATURE(outf,CF_JUMP|CF_CALL);
 		SET_CODEREF(outf,pc+2*(((msw)<<16)|(lsw)),fl_CF);
 		outf->itype=i_call;
