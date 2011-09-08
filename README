@@ -11,6 +11,8 @@ what
      - Memory Mapped Register adresses for ADSP-BF53x/ADSP-BF56x
      - Basically Memory + I/O Registers of Rigol 1052E / Rigol 1102E (in work)
 
+   IDA Pro Firmware Loader for RGL-Files
+
 
 authors
 ~~~~~~~
@@ -20,6 +22,7 @@ authors
    Based on parts of libopcodes (Free Software Foundation, Inc.) and
    Simple Python Byte Code Module (Chris Eagle <cseagle@gmail.com>)
 
+   RGL Firmware Loader by TomasVlad
 
 license
 ~~~~~~~
@@ -35,8 +38,8 @@ compile/install
 
    Copy the files to sdk/module/blackfin, open the Visual Studio 6
    project files and start build. 
-   Copy Release/blackfin.w32 to procs in your IDA folder,
-   and blackfin.cfg to cfg in your IDA folder.
+   Copy Release/blackfin.w32 to procs, blackfin.cfg to cfg and
+   Release/rigol_ldr.ldw to loaders in your IDA folder.
 
    Sorry, at the moment only a visual Studio 6 project file exists.
    There is a additional Makefile that is a startpoint to compile with another

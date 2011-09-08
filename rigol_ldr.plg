@@ -1,0 +1,65 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: blackfin - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOKUME~1\IDIOTU~1\LOKALE~1\Temp\RSP9D.tmp" with contents
+[
+/nologo /Gz /MT /W3 /GX /O2 /I "../../include" /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_USRDLL" /D "BLACKFIN_EXPORTS" /D "__NT__" /D "__IDP__" /FR"Release/" /Fp"Release/blackfin.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\ida\yagidps\module\blackfin\ana.cpp"
+"C:\ida\yagidps\module\blackfin\bfin-dis.cpp"
+"C:\ida\yagidps\module\blackfin\emu.cpp"
+"C:\ida\yagidps\module\blackfin\out.cpp"
+"C:\ida\yagidps\module\blackfin\reg.cpp"
+]
+Creating command line "cl.exe @C:\DOKUME~1\IDIOTU~1\LOKALE~1\Temp\RSP9D.tmp" 
+Creating temporary file "C:\DOKUME~1\IDIOTU~1\LOKALE~1\Temp\RSP9E.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ida.lib /nologo /dll /incremental:no /pdb:"Release/blackfin.pdb" /map:"Release/blackfin.map" /machine:I386 /out:"Release/blackfin.w32" /implib:"Release/blackfin.lib" /libpath:"../../libvc.w32" /export:LPH 
+.\Release\ana.obj
+".\Release\bfin-dis.obj"
+.\Release\emu.obj
+.\Release\out.obj
+.\Release\reg.obj
+]
+Creating command line "link.exe @C:\DOKUME~1\IDIOTU~1\LOKALE~1\Temp\RSP9E.tmp"
+<h3>Output Window</h3>
+Compiling...
+ana.cpp
+bfin-dis.cpp
+emu.cpp
+out.cpp
+reg.cpp
+Linking...
+   Creating library Release/blackfin.lib and object Release/blackfin.exp
+Creating temporary file "C:\DOKUME~1\IDIOTU~1\LOKALE~1\Temp\RSPA2.bat" with contents
+[
+@echo off
+..\..\bin\mkidp Release\blackfin.w32   "Blackfin:Blackfin"
+copy Release\blackfin.w32 c:\programme\ida\procs\blackfin.w32
+copy blackfin.cfg c:\programme\ida\cfg\blackfin.cfg
+]
+Creating command line "C:\DOKUME~1\IDIOTU~1\LOKALE~1\Temp\RSPA2.bat"
+ADDING PROCESSOR NAMES...
+        1 Datei(en) kopiert.
+        1 Datei(en) kopiert.
+
+
+
+<h3>Results</h3>
+blackfin.w32 - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: rigolldr - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+rigol_ldr.ldw - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
