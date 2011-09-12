@@ -2950,7 +2950,7 @@ static int decode_LDIMMhalf_0 (TIword iw0, TIword iw1, disassemble_info *outf)
 	{
 		OUTS (outf, ";");
 
-		if( (grp == 1) || (grp == 2))
+		//if( (grp == 1) || (grp == 2))
 		{
 			OUTC (outf, regs (reg, grp));
 			OUTC (outf, "=");
@@ -2961,12 +2961,12 @@ static int decode_LDIMMhalf_0 (TIword iw0, TIword iw1, disassemble_info *outf)
 			else
 				add_preg_dataref_h(*pval, outf);
 		}
-		else
+		/*else
 		{
 			OUTC (outf, regs (reg, grp));
 			OUTC (outf, "=");
 			OUTC (outf, huimm32e (*pval));
-		}
+		}*/
 
 		comment = 1;
 	}

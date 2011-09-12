@@ -54,11 +54,31 @@ void idaapi blackfin_out(void)
 	//Add data references
 	if(odi.drefmode==DMODE_LOAD_HIGH) 
 	{
-		char name[60];
-		if(get_colored_long_name(0, odi.daddr, name,60))
-			printf_line(0,"                      -> %s", name);
+		char name[MAXSTR];
+
+		
+		size_t len = get_max_ascii_length(odi.daddr, ASCSTR_C, true);
+
+		
+		
+		if(len>2)
+		{
+			char string[30]={0};
+
+			get_ascii_contents(odi.daddr, len, ASCSTR_C, string, sizeof(string));
+
+			if(get_colored_long_name(0, odi.daddr, name,60))
+				printf_line(0,"                      -> %s => " COLSTR("\"%s\"",SCOLOR_RPTCMT), name, string);
+			else
+				printf_line(0,"                      -> " COLSTR("0x%lx",SCOLOR_NUMBER) " => " COLSTR("\"%s\"",SCOLOR_RPTCMT) , (unsigned long) odi.daddr,string);
+		}
 		else
-			printf_line(0,"                      -> " COLSTR("0x%lx",SCOLOR_NUMBER), (unsigned long) odi.daddr);
+		{
+			if(get_colored_long_name(0, odi.daddr, name,60))
+				printf_line(0,"                      -> %s", name);
+			else
+				printf_line(0,"                      -> " COLSTR("0x%lx",SCOLOR_NUMBER), (unsigned long) odi.daddr);
+		}
 	}
 
 }

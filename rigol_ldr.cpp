@@ -93,7 +93,8 @@ static void idaapi load_rgl_file(linput_t *li, ushort neflags,const char * /*fil
 		if(flg_fin) break;
 	}
 
-	inf.af = 
+	inf.af =
+	AF_FINAL|
 	AF_FIXUP        | //   0x0001          // Create offsets and segments using fixup info
 	AF_MARKCODE     | //   0x0002          // Mark typical code sequences as code
 	AF_UNK          | //   0x0004          // Delete instructions with no xrefs
@@ -106,6 +107,8 @@ static void idaapi load_rgl_file(linput_t *li, ushort neflags,const char * /*fil
 	AF_IMMOFF       | //   0x2000          // Convert 32bit instruction operand to offset
 	AF_DREFOFF    ; //   0x4000          // Create offset if data xref to seg32 exists
 	inf.af2 = 0;
+
+	set_processor_type("Blackfin", SETPROC_ALL|SETPROC_FATAL);
 }
 
 //----------------------------------------------------------------------
