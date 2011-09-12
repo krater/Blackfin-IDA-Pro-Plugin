@@ -66,8 +66,8 @@ Bugs/Todo
      - Add DMA-Registers for BF561
    
    Rigol:
-     - Find RAM Positions
-     - Find I/O Registers for ROM-Banking
+     - BUG:When RGL loader is used the blackfin.cfg is ignored
+
 
 
    Patches are welcome :)
