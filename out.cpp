@@ -88,12 +88,18 @@ void idaapi blackfin_out(void)
 //set as member of LPH struct
 void idaapi header(void) 
 {
-   MakeLine("My header line");
+	printf_line(0,"");
+	printf_line(0,"");
+	printf_line(0,"# Blackfin Processor plugin by Andreas Schuler <andreas@schulerdev.de>");
+	printf_line(0,"# ");
+	printf_line(0,"# Based on Simple Python Byte Code Module (Chris Eagle <cseagle@gmail.com>)");
+	printf_line(0,"# Released under GPL v2");
+	printf_line(0,"# ");
+	printf_line(0,"# More infos at http://www.codenaschen.de");
 }
 
 void idaapi footer() 
 {
-   MakeLine("My footer line");
 }
 
 //----------------------------------------------------------------------
