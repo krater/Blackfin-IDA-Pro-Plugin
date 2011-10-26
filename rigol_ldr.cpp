@@ -37,6 +37,8 @@ unsigned int addr,size;
 unsigned short flags;
 static char buf[0x10000];
 
+unsigned long crc32(unsigned char *data,size_t len);
+
 //--------------------------------------------------------------------------
 //
 //      check input file format. if recognized, then return 1
@@ -45,11 +47,23 @@ static char buf[0x10000];
 //
 static int idaapi accept_rgl_file(linput_t *li,char fileformatname[MAX_FILE_FORMAT_NAME], int n) 
 {
-  if(n) return(0);
-  qlseek(li, 0, SEEK_SET);
-  if(qlread(li, &_hdr, sizeof(_hdr)) != sizeof(_hdr)) return(0);
-  qstrncpy(fileformatname, "Rigol GEN/BIN ROM file", MAX_FILE_FORMAT_NAME);
-  return(1);
+	unsigned long crc;
+
+	if(n)
+		return(0);
+
+	qlseek(li, 0, SEEK_SET);
+	if(qlread(li, &_hdr, sizeof(_hdr)) != sizeof(_hdr)) 
+		return(0);
+
+	crc=crc32((unsigned char*)&_hdr,16);
+	if(crc!=_hdr.crc32)
+		return(0);
+
+	qstrncpy(fileformatname, "Rigol GEN/BIN ROM file", MAX_FILE_FORMAT_NAME);
+	
+	return(1);
+
 }
 
 int get_hdr(linput_t *li)
@@ -133,3 +147,23 @@ loader_t LDSC =
   NULL,
   init_loader_options,
 };
+
+
+unsigned long crc32(unsigned char *data,size_t len)
+{
+	unsigned long crc32=0xffffffff;
+
+	size_t i,a;
+	for(a=0;a<len;a++)
+	{
+		for(i=0;i<8;i++)
+		{
+			if((crc32&0x01)!=(unsigned long)((data[a]&(1<<i))?1:0))
+				crc32=(crc32>>1)^0xEDB88320;
+			else
+				crc32>>=1;
+		}
+	}
+
+	return crc32^0xffffffff;
+}
