@@ -6,7 +6,7 @@
    Based on parts of libopcodes (Free Software Foundation, Inc.) and
    Simple Python Byte Code Module (Chris Eagle <cseagle@gmail.com>)
 
-   Some minor changes from Andreas Schuler <andreas at schulerdev.de>
+   Some changes from Andreas Schuler <andreas at schulerdev.de>
    
    This program is free software; you can redistribute it and/or modify it
    under the terms of the GNU General Public License as published by the Free
