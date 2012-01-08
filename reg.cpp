@@ -31,6 +31,8 @@ char device[MAXSTR] = "";
 static size_t numports;
 static ioport_t *ports;
 
+#define CHECK_IORESP 1			//activate config file reading, thanks to tommie
+
 #include "../iocommon.cpp"		//it doesn't look nice, but i think its designated to include it
 
 

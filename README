@@ -66,7 +66,6 @@ Bugs/Todo
      - Add DMA-Registers for BF561
    
    Rigol:
-     - BUG: When RGL loader is used the blackfin.cfg is ignored
      - BUG: Sometimes data references aren't displayed correct 
 
 
