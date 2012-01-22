@@ -55,7 +55,15 @@ static int idaapi notify(processor_t::idp_notify msgid, ...)
 		{
 			case processor_t::init:
 				inf.mf = 0;       //ensure little endian!
-				break;         
+				break;  
+			case processor_t::newprc:
+			{
+				/*char cfgfile[QMAXFILE];
+				get_cfg_filename(cfgfile, sizeof(cfgfile));
+				if(choose_ioport_device(cfgfile, device, sizeof(device), parse_area_line0))
+					set_device_name(device, IORESP_ALL);				
+				break;*/
+			}
 			case processor_t::make_data: 
 			{
 				ea_t ea = va_arg(va, ea_t);

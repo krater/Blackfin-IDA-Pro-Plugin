@@ -65,9 +65,6 @@ Bugs/Todo
      - LOOP has no references
      - Add DMA-Registers for BF561
    
-   Rigol:
-     - BUG: Sometimes data references aren't displayed correct 
-
 
    Patches are welcome :)
 

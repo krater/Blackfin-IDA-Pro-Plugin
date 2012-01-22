@@ -65,6 +65,10 @@ void idaapi blackfin_out(void)
 		{
 			char string[30]={0};
 
+			//fill the registers with the right values for reference...
+			if(get_max_ascii_length(odi.daddr-4, ASCSTR_C, true)==4)
+				get_ascii_contents(odi.daddr-4, len, ASCSTR_C, string, sizeof(string));
+
 			get_ascii_contents(odi.daddr, len, ASCSTR_C, string, sizeof(string));
 
 			if(get_colored_long_name(0, odi.daddr, name,60))
