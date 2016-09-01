@@ -24,6 +24,8 @@ authors
 
    RGL Firmware Loader by TomasVlad
 
+   Ported to IDA 6.8 by Martin Heistermann <git () mheistermann.de>
+
 license
 ~~~~~~~
 
