@@ -28,7 +28,7 @@
 
 #include <pro.h>
 #include <kernwin.hpp>
-#include "../idaidp.hpp"
+#include "../module/idaidp.hpp"
 #include <fpro.h>
 
 #pragma pack(1)
@@ -58,7 +58,7 @@ int   idaapi blackfin_ana(void);
 int   idaapi blackfin_emu(void);
 void  idaapi blackfin_out(void);
 
-bool create_func_frame(func_t *pfn);
+bool idaapi create_func_frame(func_t *pfn);
 
 ea_t  idaapi get_ref_addr(ea_t ea, const char *str, int pos);
 

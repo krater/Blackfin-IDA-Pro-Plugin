@@ -139,10 +139,9 @@ static const char *fmtconst (const_forms_t cf, TIword x, bfd_vma pc, disassemble
 		if (/*outf->symbol_at_address_func (ea, outf) ||*/ !constant_formats[cf].exact)
 		{
 			//outf->print_address_func (ea, outf);
-			char name[60];
-
-			if(get_colored_long_name(pc, ea, name,60))
-				qsnprintf (buf, 60,"%s", name);
+			qstring name;
+			if(get_colored_long_name(&name, ea) && !name.empty())
+				qsnprintf (buf, 60,"%s", name.c_str());
 			else
 				qsnprintf (buf, 60,COLSTR("0x%lx",SCOLOR_NUMBER), ea);
 

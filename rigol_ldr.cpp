@@ -27,7 +27,7 @@
         L O A D E R  for firmware files for Rigol oscilloscope.
 */
 
-#include "../../ldr/idaldr.h"
+#include "../ldr/idaldr.h"
 #include "rigol_ldr.h"
 
 static rgl_hdr _hdr;
@@ -145,7 +145,6 @@ loader_t LDSC =
   load_rgl_file,
   NULL,
   NULL,
-  init_loader_options,
 };
 
 

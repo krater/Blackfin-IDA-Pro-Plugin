@@ -86,7 +86,7 @@ static void setup_far_func(func_t *pfn)
 }
 */
 
-bool create_func_frame(func_t *pfn)
+bool idaapi create_func_frame(func_t *pfn)
 {
   if ( pfn != NULL )
   {
