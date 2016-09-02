@@ -140,7 +140,7 @@ static const char *fmtconst (const_forms_t cf, TIword x, bfd_vma pc, disassemble
 		{
 			//outf->print_address_func (ea, outf);
 			qstring name;
-			if(get_colored_long_name(&name, ea))
+			if(get_colored_long_name(&name, ea) && !name.empty())
 				qsnprintf (buf, 60,"%s", name.c_str());
 			else
 				qsnprintf (buf, 60,COLSTR("0x%lx",SCOLOR_NUMBER), ea);

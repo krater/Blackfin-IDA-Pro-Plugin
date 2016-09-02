@@ -71,14 +71,14 @@ void idaapi blackfin_out(void)
 
 			get_ascii_contents(odi.daddr, len, ASCSTR_C, string, sizeof(string));
 
-			if(get_colored_long_name(&name, odi.daddr))
+			if(get_colored_long_name(&name, odi.daddr) && !name.empty())
 				printf_line(0,"                      -> %s => " COLSTR("\"%s\"",SCOLOR_RPTCMT), name.c_str(), string);
 			else
 				printf_line(0,"                      -> " COLSTR("0x%lx",SCOLOR_NUMBER) " => " COLSTR("\"%s\"",SCOLOR_RPTCMT) , (unsigned long) odi.daddr,string);
 		}
 		else
 		{
-			if(get_colored_long_name(&name, odi.daddr))
+			if(get_colored_long_name(&name, odi.daddr) && !name.empty())
 				printf_line(0,"                      -> %s", name.c_str());
 			else
 				printf_line(0,"                      -> " COLSTR("0x%lx",SCOLOR_NUMBER), (unsigned long) odi.daddr);
